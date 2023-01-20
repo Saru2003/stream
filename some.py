@@ -41,7 +41,7 @@ if sb=="One":
     ph=st.text_input('Mobile number of participant  ')
     pdf=st.file_uploader("College ID { in PDF format }",type=['PDF'])
     if pdf is not None:
-            with open("/home/sarvesh/Documents/pdfs/("+name+ ")"+pdf.name,"wb") as f:
+            with open(pdf.name,"wb") as f:
                 f.write(pdf.getbuffer())
             st.success("Done")
 
