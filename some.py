@@ -104,7 +104,7 @@ if st.button("Submit"):
         # st.markdown(f'<h1 style="color:#33ff33;font-size:25px;font-family: Verdana, Geneva, Tahoma, sans-serif">{"Successfully registered"}</h1>', unsafe_allow_html=True)
         
         g = Github("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")
-        repo=g.get_repo("Saru2003/stream")
+        repo=g.get_repo("Saru2003/id")
         file = repo.get_contents("ID.txt")
             
         env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
