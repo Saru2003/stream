@@ -4,4 +4,4 @@ oauth2client
 pdfkit
 jinja2
 PyGithub
-
+secure-smtplib
