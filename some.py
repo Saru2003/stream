@@ -70,8 +70,9 @@ def fun():
                         message='Subject: {}\n\n{}'.format("Technotronz Registration Completed!",text )
                         server.sendmail("21i252@psgtech.ac.in",mail,message)
                         server.quit()
+                        st.write("(A mail has been sent your registered mail id)")
             except:
-                        st.write("Invalid mail")
+                        st.write("Invalid Mail ID is entered")
             fun2()
 st.write("Note: Make sure you download the Technotronz ID PDF after submitting for participating in events!")
 if st.button("Submit"):
