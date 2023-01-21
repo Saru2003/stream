@@ -117,6 +117,10 @@ if st.button("Submit"):
         template = env.get_template("template.html")
 #         f=open("ID.txt","r")
 #         r=f.read()
+        ran_num=str(random.randint(1, 100))
+        ran_letter = chr(random.randint(ord('A'), ord('Z')))
+#         print(ran_letter+ran_num)
+        r=ran_num+ran_letter
         html = template.render(reg=r,name=name,email=mail,phno=ph)
 #         f.close()
         sheet.insert_row(["IETE"+str(" ")+str(content)]+row,len(data)+1)
