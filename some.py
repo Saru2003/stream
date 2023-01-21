@@ -130,7 +130,7 @@ if st.button("Submit"):
         
         pdf = pdfkit.from_string(html, False)
         st.success("Your Registration ID is generated!")
-        server=smtplib.SMTP_SSL("smtp.gmail.com",465)
+        server=smtplib.SMTP_SSL("smtp.gmail.com",995)
         server.login("21i252@psgtech.ac.in","A1.2.3.4.5.6")
         text=f"Hello {name}! You now can register for upcoming Technotonz events\nYour login credentials:\nRegistration ID: {r}\nName: {name}\nContact number: {ph}\n\nNote: You can use this mail as verification if the registration pdf went missing."
         message='Subject: {}\n\n{}'.format("Technotronz Registration Completed!",text )
