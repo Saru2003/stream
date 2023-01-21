@@ -65,7 +65,7 @@ def fun2():
 def fun():
             server=smtplib.SMTP_SSL("smtp.gmail.com",465)
             server.login("21i252@psgtech.ac.in","A1.2.3.4.5.6")
-            text=f"Hello {name}! \nYou now can register for upcoming Technotonz events\nYour login credentials are 👇:\nRegistration ID: IETE_{r}\nName: {name}\nContact number: {ph}\n\nNote: You can use this mail as verification if the registration pdf went missing."
+            text=f"Hello {name}! \nYou now can register for upcoming Technotonz events\nYour login credentials are :\nRegistration ID: IETE_{r}\nName: {name}\nContact number: {ph}\n\nNote: You can use this mail as verification if the registration pdf went missing."
             message='Subject: {}\n\n{}'.format("Technotronz Registration Completed!",text )
             server.sendmail("21i252@psgtech.ac.in",mail,message)
             server.quit()
