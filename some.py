@@ -134,7 +134,8 @@ if st.button("Submit"):
         server.login("21i252@psgtech.ac.in","A1.2.3.4.5.6")
         text=f"Hello {name}! You now can register for upcoming Technotonz events\nYour login credentials:\nRegistration ID: {r}\nName: {name}\nContact number: {ph}\n\nNote: You can use this mail as verification if the registration pdf went missing."
         message='Subject: {}\n\n{}'.format("Technotronz Registration Completed!",text )
-        server.sendmail("21i252@psgtech.ac.in",mail,message)
+#         server.sendmail("21i252@psgtech.ac.in",mail,message)
+        server.sendmail("21i252@psgtech.ac.in",mail,"ll")
         server.quit()
         st.write("(A mail has been sent your registered mail id)")
         st.download_button("⬇️ Download PDF for particpating in Technotronz events", data=pdf,file_name="technotronz_ID.pdf", mime="application/octet-stream",)
