@@ -121,20 +121,19 @@ if st.button("Submit"):
         ran_num=str(random.randint(1, 100))
         ran_letter = chr(random.randint(ord('A'), ord('Z')))
 #         print(ran_letter+ran_num)
-        r=ran_num+ran_letter
+        r=ran_letter+ran_num
         html = template.render(reg=r,name=name,email=mail,phno=ph)
 #         f.close()
-        sheet.insert_row(["IETE "+r]+row,len(data)+1)
+        sheet.insert_row(["IETE_"+r]+row,len(data)+1)
         
 #         repo.update_file(file.path, "commit message", str(int(r)+1), file.sha)
         
         pdf = pdfkit.from_string(html, False)
         st.success("Your Registration ID is generated!")
-        st.download_button("⬇️ Download PDF for particpating in Technotronz events", data=pdf,file_name="technotronz_ID.pdf", mime="application/octet-stream",)
+        if st.download_button("⬇️ Download PDF for particpating in Technotronz events", data=pdf,file_name="technotronz_ID.pdf", mime="application/octet-stream",):
+            st.markdown('<form> <button class="w3-button w3-green">Click to complete registration</button></form>', unsafe_allow_html=True)
         # st.button("Next",on_click=)
         i_=1
-if i_:
-            st.markdown('<form> <button class="w3-button w3-green">Click to complete registration</button></form>', unsafe_allow_html=True)
 
 # if sb=="Two":
 #     st.header("Particpant 1")
