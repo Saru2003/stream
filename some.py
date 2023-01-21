@@ -143,14 +143,15 @@ if st.button("Submit"):
         sheet.insert_row(["IETE_"+r]+row,len(data)+1)
 #         st.markdown('<form> <button class="w3-button w3-green">Click to complete registration</button></form>', unsafe_allow_html=True)
 #         if name_err==rollno_err==mail_err==clg_err==year_err==ph_err==1:
-st.markdown('<form> <button class="w3-button w3-green">Click to complete/quit registration</button></form>', unsafe_allow_html=True)
+
 def fun():
             server=smtplib.SMTP_SSL("smtp.gmail.com",465)
             server.login("21i252@psgtech.ac.in","A1.2.3.4.5.6")
             text=f"Hello {name}! You now can register for upcoming Technotonz events\nYour login credentials:\nRegistration ID: {r}\nName: {name}\nContact number: {ph}\n\nNote: You can use this mail as verification if the registration pdf went missing."
             message='Subject: {}\n\n{}'.format("Technotronz Registration Completed!",text )
             server.sendmail("21i252@psgtech.ac.in",mail,message)
-server.quit()
+            server.quit()
+            st.markdown('<form> <button class="w3-button w3-green">Click to complete/quit registration</button></form>', unsafe_allow_html=True)
 # if sb=="Two":
 #     st.header("Particpant 1")
 #     name1=st.text_input('Name of participant 1:')
