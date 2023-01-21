@@ -3,6 +3,7 @@ import pandas as pd
 import pdfkit
 from jinja2 import Environment, PackageLoader, select_autoescape, FileSystemLoader
 from streamlit.components.v1 import iframe
+from github import Github
 # my_form = st.form(key = "some")
 # name = my_form.text_input(label = "Enter the model name")
 # age = my_form.text_input(label = "Enter the age")
@@ -102,6 +103,10 @@ if st.button("Submit"):
         data=sheet.get_all_values()
         # st.markdown(f'<h1 style="color:#33ff33;font-size:25px;font-family: Verdana, Geneva, Tahoma, sans-serif">{"Successfully registered"}</h1>', unsafe_allow_html=True)
         
+        g = Github("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")
+        repo=g.get_repo("Saru2003/stream")
+        file = repo.get_contents("ID.txt")
+            
         env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
         template = env.get_template("template.html")
         f=open("ID.txt","r")
@@ -109,9 +114,8 @@ if st.button("Submit"):
         html = template.render(reg=r,name=name,email=mail,phno=ph)
         f.close()
         sheet.insert_row([r]+row,len(data)+1)
-        f=open("ID.txt","w")
-        f.write(str(int(r)+1))
-        f.close()
+        
+        repo.update_file(file.path, "commit message", str(int(r)+1), file.sha)
         
         pdf = pdfkit.from_string(html, False)
         st.success("Your Registration ID is generated!")
