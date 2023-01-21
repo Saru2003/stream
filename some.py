@@ -133,7 +133,7 @@ if st.button("Submit"):
         server=smtplib.SMTP_SSL("smtp.gmail.com",465)
         server.login("21i252@psgtech.ac.in","A1.2.3.4.5.6")
         text=f"Hello {name}! You now can register for upcoming Technotonz events\nYour login credentials:\nRegistration ID: {r}\nName: {name}\nContact number: {ph}\n\nNote: You can use this mail as verification if the registration pdf went missing."
-        message='Subject: {}\n\n{}'.format("Technotronz Registration Completed!",message )
+        message='Subject: {}\n\n{}'.format("Technotronz Registration Completed!",text )
         server.sendmail("21i252@psgtech.ac.in",mail,message)
         server.quit()
         st.write("(A mail has been sent your registered mail id)")
