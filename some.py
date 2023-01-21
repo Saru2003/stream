@@ -59,7 +59,7 @@ ph=st.text_input('Mobile number of participant  (follow this format: 935xxxxxxx)
 #         with open(pdf.name,"wb") as f:
 #             f.write(pdf.getbuffer())
 #         st.success("Done")
-st.write("Note: Make sure you download the Technotronz ID PDF for participating in events!")
+st.write("Note: Make sure you download the Technotronz ID PDF after submitting for participating in events!")
 if st.button("Submit"):
     
     name_err=rollno_err=mail_err=clg_err=year_err=ph_err=pdf_err=0
