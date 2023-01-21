@@ -60,6 +60,8 @@ ph=st.text_input('Mobile number of participant  (follow this format: 935xxxxxxx)
 #         with open(pdf.name,"wb") as f:
 #             f.write(pdf.getbuffer())
 #         st.success("Done")
+def fun2():
+            st.markdown('<form> <button class="w3-button w3-green">Click to complete/quit registration</button></form>', unsafe_allow_html=True)
 def fun():
             server=smtplib.SMTP_SSL("smtp.gmail.com",465)
             server.login("21i252@psgtech.ac.in","A1.2.3.4.5.6")
@@ -67,7 +69,7 @@ def fun():
             message='Subject: {}\n\n{}'.format("Technotronz Registration Completed!",text )
             server.sendmail("21i252@psgtech.ac.in",mail,message)
             server.quit()
-            st.markdown('<form> <button class="w3-button w3-green">Click to complete/quit registration</button></form>', unsafe_allow_html=True)
+            fun2()
 st.write("Note: Make sure you download the Technotronz ID PDF after submitting for participating in events!")
 if st.button("Submit"):
     
