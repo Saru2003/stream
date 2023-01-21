@@ -113,7 +113,7 @@ if st.button("Submit"):
         r=f.read()
         html = template.render(reg=r,name=name,email=mail,phno=ph)
         f.close()
-        sheet.insert_row([r]+row,len(data)+1)
+        sheet.insert_row(["IETE"+r]+row,len(data)+1)
         
         repo.update_file(file.path, "commit message", str(int(r)+1), file.sha)
         
