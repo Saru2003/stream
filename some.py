@@ -132,7 +132,8 @@ if st.button("Submit"):
         st.success("Your Registration ID is generated!")
         st.download_button("⬇️ Download PDF for particpating in Technotronz events", data=pdf,file_name="technotronz_ID.pdf", mime="application/octet-stream",)
         # st.button("Next",on_click=)
-#         st.markdown('<form> <button class="w3-button w3-green">Click to complete registration</button></form>', unsafe_allow_html=True)
+
+st.markdown('<form> <button class="w3-button w3-green">Click to complete registration</button></form>', unsafe_allow_html=True)
 
 # if sb=="Two":
 #     st.header("Particpant 1")
