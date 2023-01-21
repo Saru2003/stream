@@ -65,6 +65,7 @@ if st.button("Submit"):
     
     name_err=rollno_err=mail_err=clg_err=year_err=ph_err=pdf_err=0
     row=[name,rollno,mail,clg,year,ph]
+    dum=mail.split("@")
     if name=="" or name==' ':
         st.error("Enter valid Name of participant")
     else:
@@ -75,7 +76,7 @@ if st.button("Submit"):
     else:
         rollno_err=1
 ###
-    if mail=="" or mail==' ':
+    if mail=="" or mail==' ' or len(dum)!=2:
         st.error("Enter valid Mail ID of participant")
     else:
         mail_err=1
@@ -130,15 +131,12 @@ if st.button("Submit"):
         
         pdf = pdfkit.from_string(html, False)
         st.success("Your Registration ID is generated!")
-        try:
-                    server=smtplib.SMTP_SSL("smtp.gmail.com",465)
-                    server.login("21i252@psgtech.ac.in","A1.2.3.4.5.6")
-                    text=f"Hello {name}! You now can register for upcoming Technotonz events\nYour login credentials:\nRegistration ID: {r}\nName: {name}\nContact number: {ph}\n\nNote: You can use this mail as verification if the registration pdf went missing."
-                    message='Subject: {}\n\n{}'.format("Technotronz Registration Completed!",message )
-                    server.sendmail("21i252@psgtech.ac.in",mail,message)
-                    server.quit()
-        except:
-            pass
+        server=smtplib.SMTP_SSL("smtp.gmail.com",465)
+        server.login("21i252@psgtech.ac.in","A1.2.3.4.5.6")
+        text=f"Hello {name}! You now can register for upcoming Technotonz events\nYour login credentials:\nRegistration ID: {r}\nName: {name}\nContact number: {ph}\n\nNote: You can use this mail as verification if the registration pdf went missing."
+        message='Subject: {}\n\n{}'.format("Technotronz Registration Completed!",message )
+        server.sendmail("21i252@psgtech.ac.in",mail,message)
+        server.quit()
         st.write("(A mail has been sent your registered mail id)")
         st.download_button("⬇️ Download PDF for particpating in Technotronz events", data=pdf,file_name="technotronz_ID.pdf", mime="application/octet-stream",)
         sheet.insert_row(["IETE_"+r]+row,len(data)+1)
