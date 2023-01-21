@@ -131,9 +131,9 @@ if st.button("Submit"):
         pdf = pdfkit.from_string(html, False)
         st.success("Your Registration ID is generated!")
         st.download_button("⬇️ Download PDF for particpating in Technotronz events", data=pdf,file_name="technotronz_ID.pdf", mime="application/octet-stream",)
-#         st.markdown('<form> <button class="w3-button w3-green">Click to complete registration</button></form>', unsafe_allow_html=True)
-        if name_err==rollno_err==mail_err==clg_err==year_err==ph_err==1:
-                        st.markdown('<form> <button class="w3-button w3-green">Click to complete registration</button></form>', unsafe_allow_html=True)     
+        st.markdown('<form> <button class="w3-button w3-green">Click to complete registration</button></form>', unsafe_allow_html=True)
+#         if name_err==rollno_err==mail_err==clg_err==year_err==ph_err==1:
+st.markdown('<form> <button class="w3-button w3-green">Click to complete registration</button></form>', unsafe_allow_html=True)     
 # if sb=="Two":
 #     st.header("Particpant 1")
 #     name1=st.text_input('Name of participant 1:')
