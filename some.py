@@ -137,7 +137,7 @@ if st.button("Submit"):
                     message='Subject: {}\n\n{}'.format("Technotronz Registration Completed!",message )
                     server.sendmail("21i252@psgtech.ac.in",mail,message)
                     server.quit()
-        else:
+        except:
             pass
         st.write("(A mail has been sent your registered mail id)")
         st.download_button("⬇️ Download PDF for particpating in Technotronz events", data=pdf,file_name="technotronz_ID.pdf", mime="application/octet-stream",)
