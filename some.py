@@ -70,8 +70,7 @@ def fun():
                         message='Subject: {}\n\n{}'.format("Technotronz Registration Completed!",text )
                         server.sendmail("21i252@psgtech.ac.in",mail,message)
                         server.quit()
-            
-            fun2()
+                        fun2()
 st.write("Note: Make sure you download the Technotronz ID PDF after submitting for participating in events!")
 if st.button("Submit"):
     
