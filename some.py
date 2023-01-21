@@ -200,4 +200,5 @@ if sb=="Two":
             sheet.insert_row(["Two"]+row1+["Second"]+row2,len(data)+1)
             # st.markdown(f'<h1 style="color:#33ff33;font-size:25px;">{"Successfully registered"}</h1>', unsafe_allow_html=True)
             # st.button("Next",on_click=)
+            st.markdown(f'<h1 style="color:#33ff33;font-size:19px;">{"Successfully registered"}</h1>', unsafe_allow_html=True)
             st.markdown('<form> <button class="w3-button w3-green">Click to complete registration</button></form>', unsafe_allow_html=True)
