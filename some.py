@@ -110,7 +110,7 @@ if st.button("Submit"):
 #         g=Github("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")
 #         repo=g.get_repo("Saru2003/id")
 #         file = repo.get_contents("ID.txt")
-        content = int(file.decoded_content.decode())
+#         content = int(file.decoded_content.decode())
 #         repo.update_file(file.path, "commit message", str(content+1), file.sha)
 
         env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
