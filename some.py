@@ -59,7 +59,7 @@ ph=st.text_input('Mobile number of participant  (follow this format: 935xxxxxxx)
 #         with open(pdf.name,"wb") as f:
 #             f.write(pdf.getbuffer())
 #         st.success("Done")
-
+st.write("Note: Make sure you download the Technotronz ID PDF for participating in events!")
 if st.button("Submit"):
     name_err=rollno_err=mail_err=clg_err=year_err=ph_err=pdf_err=0
     row=[name,rollno,mail,clg,year,ph]
@@ -113,7 +113,7 @@ if st.button("Submit"):
 #         file = repo.get_contents("ID.txt")
 #         content = int(file.decoded_content.decode())
 #         repo.update_file(file.path, "commit message", str(content+1), file.sha)
-        st.write("Note: Make sure you download the Technotronz ID PDF for participating in events!")
+        
         env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
         template = env.get_template("template.html")
 #         f=open("ID.txt","r")
