@@ -103,19 +103,25 @@ if st.button("Submit"):
         data=sheet.get_all_values()
         # st.markdown(f'<h1 style="color:#33ff33;font-size:25px;font-family: Verdana, Geneva, Tahoma, sans-serif">{"Successfully registered"}</h1>', unsafe_allow_html=True)
         
-        g = Github("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")
+#         g = Github("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")
+#         repo=g.get_repo("Saru2003/id")
+#         file = repo.get_contents("ID.txt")
+            
+        g=Github("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")
         repo=g.get_repo("Saru2003/id")
         file = repo.get_contents("ID.txt")
-            
+        content = int(file.decoded_content.decode())
+        repo.update_file(file.path, "commit message", str(content+1), file.sha)
+
         env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
         template = env.get_template("template.html")
-        f=open("ID.txt","r")
-        r=f.read()
+#         f=open("ID.txt","r")
+#         r=f.read()
         html = template.render(reg=r,name=name,email=mail,phno=ph)
-        f.close()
-        sheet.insert_row(["IETE"+r]+row,len(data)+1)
+#         f.close()
+        sheet.insert_row(["IETE"+str(" ")+str(content)]+row,len(data)+1)
         
-        repo.update_file(file.path, "commit message", str(int(r)+1), file.sha)
+#         repo.update_file(file.path, "commit message", str(int(r)+1), file.sha)
         
         pdf = pdfkit.from_string(html, False)
         st.success("Your Registration ID is generated!")
