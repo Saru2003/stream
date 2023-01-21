@@ -43,7 +43,7 @@ if sb=="One":
     ph=st.text_input('Mobile number of participant  ')
     pdf=st.file_uploader("College ID { in PDF format }",type=['PDF'])
     if pdf is not None:
-            with open("/home/sarvesh/Documents/pdfs/("+name+ ")"+pdf.name,"wb") as f:
+            with open(pdf.name,"wb") as f:
                 f.write(pdf.getbuffer())
             st.success("Done")
 
@@ -102,7 +102,7 @@ if sb=="Two":
     ph1=st.text_input('Mobile number of participant 1:')
     pdf1=st.file_uploader("College ID of paticipant 1 { in PDF format }",type=['PDF'])
     if pdf1 is not None:
-            with open("/home/sarvesh/Documents/pdfs/("+name1+ ")"+pdf1.name,"wb") as f:
+            with open(pdf1.name,"wb") as f:
                 f.write(pdf1.getbuffer())
             st.success("Done")
     
@@ -115,7 +115,7 @@ if sb=="Two":
     ph2=st.text_input('Mobile number of participant 2:')
     pdf2=st.file_uploader("College ID of paticipant 2 { in PDF format }",type=['PDF'])
     if pdf2 is not None:
-            with open("/home/sarvesh/Documents/pdfs/("+name2+ ")"+pdf2.name,"wb") as f:
+            with open(pdf2.name,"wb") as f:
                 f.write(pdf2.getbuffer())
             st.success("Done")
     if st.button("Submit"):
