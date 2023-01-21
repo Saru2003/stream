@@ -65,7 +65,6 @@ if st.button("Submit"):
     
     name_err=rollno_err=mail_err=clg_err=year_err=ph_err=pdf_err=0
     row=[name,rollno,mail,clg,year,ph]
-    dum=mail.split("@")
     if name=="" or name==' ':
         st.error("Enter valid Name of participant")
     else:
@@ -76,7 +75,7 @@ if st.button("Submit"):
     else:
         rollno_err=1
 ###
-    if mail=="" or mail==' ' or len(dum)!=2:
+    if mail=="" or mail==' ' or mail.count("@")<1:
         st.error("Enter valid Mail ID of participant")
     else:
         mail_err=1
