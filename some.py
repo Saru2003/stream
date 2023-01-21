@@ -75,7 +75,7 @@ if st.button("Submit"):
     else:
         rollno_err=1
 ###
-    if mail=="" or mail==' ' or mail.count("@")<1:
+    if mail=="" or mail==' ':
         st.error("Enter valid Mail ID of participant")
     else:
         mail_err=1
