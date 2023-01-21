@@ -113,7 +113,7 @@ if st.button("Submit"):
 #         file = repo.get_contents("ID.txt")
 #         content = int(file.decoded_content.decode())
 #         repo.update_file(file.path, "commit message", str(content+1), file.sha)
-
+        st.write("Note: Make sure you download the Technotronz ID PDF for participating in events!")
         env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
         template = env.get_template("template.html")
 #         f=open("ID.txt","r")
