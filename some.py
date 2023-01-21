@@ -103,14 +103,14 @@ if st.button("Submit"):
         # st.markdown(f'<h1 style="color:#33ff33;font-size:25px;font-family: Verdana, Geneva, Tahoma, sans-serif">{"Successfully registered"}</h1>', unsafe_allow_html=True)
         
         env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
-        template = env.get_template("/template.html")
+        template = env.get_template("template.html")
         f=open("ID.txt","r")
         r=f.read()
         html = template.render(reg=r,name=name,email=mail,phno=ph)
         f.close()
         sheet.insert_row([r]+row,len(data)+1)
         f=open("ID.txt","w")
-        f.write(r+"1")
+        f.write(str(int(r)+1))
         f.close()
         
         pdf = pdfkit.from_string(html, False)
