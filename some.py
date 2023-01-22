@@ -12,7 +12,8 @@ import smtplib
 # submit = my_form.form_submit_button(label = "Submit this form")
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
-st.set_page_config(page_title="Event 1")
+img=Image.open("Untitled design.png")
+st.set_page_config(page_title="Technotronz Registration",page_icon="Untitled design.png")
 hide_ststyle = """
             <style>
             #MainMenu {visibility: hidden;}
