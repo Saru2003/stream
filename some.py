@@ -135,14 +135,14 @@ if st.button("Submit"):
         template = env.get_template("template.html")
 #         f=open("ID.txt","r")
 #         r=f.read()
-        ran_num=str(random.randint(1, 100))
-        ran_letter = chr(random.randint(ord('A'), ord('Z')))
-#         print(ran_letter+ran_num)
-        r=ran_letter+ran_num
+#         ran_num=str(random.randint(1, 100))
+#         ran_letter = chr(random.randint(ord('A'), ord('Z')))
+# #         print(ran_letter+ran_num)
+#         r=ran_letter+ran_num
         html = template.render(reg=r,name=name,email=mail,phno=ph)
 #         f.close()        
 #         repo.update_file(file.path, "commit message", str(int(r)+1), file.sha)
-        
+        r=sheet.cell(1,len(data)).value
         pdf = pdfkit.from_string(html, False)
         st.success("Your Registration ID is generated!")
          
@@ -155,7 +155,7 @@ if st.button("Submit"):
 #         server.quit()
 #         st.write("(A mail has been sent your registered mail id)")
         st.download_button("⬇️ Download PDF for particpating in Technotronz events", data=pdf,file_name="technotronz_ID.pdf", mime="application/octet-stream",)
-        sheet.insert_row(["IETE_"+r]+row,len(data)+1)
+        sheet.insert_row(["IETE_"+str(int(r[5:])+1)]+row,len(data)+1)
         fun()   
 #         st.markdown('<form> <button class="w3-button w3-green">Click to complete registration</button></form>', unsafe_allow_html=True)
 #         if name_err==rollno_err==mail_err==clg_err==year_err==ph_err==1:
