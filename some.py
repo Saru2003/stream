@@ -157,7 +157,7 @@ if st.button("Submit"):
         st.download_button("⬇️ Download PDF for particpating in Technotronz events", data=pdf,file_name="technotronz_ID.pdf", mime="application/octet-stream",)
         sheet.insert_row(["IETE_"+str(int(r[5:])+1)]+row,len(data)+1)
         fun() 
-        fun2()
+#         fun2()
 st.markdown('<form> <button class="w3-button w3-green">Click to complete/quit registration</button></form>', unsafe_allow_html=True)
 #         st.markdown('<form> <button class="w3-button w3-green">Click to complete registration</button></form>', unsafe_allow_html=True)
 #         if name_err==rollno_err==mail_err==clg_err==year_err==ph_err==1:
