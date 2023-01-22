@@ -82,12 +82,17 @@ def check(email):
             if not (re.fullmatch(regex, email)):
                         return 1
             return 0
+def valid(name):
+    name=name.replace(" ","").replace(".","")
+    return name.isalpha()
+def valid2(name):
+    return name.replace(" ","").isalpha()
 st.write("Note: Make sure you download the Technotronz ID PDF after submitting for participating in events!")
 if st.button("Submit"):
     
     name_err=rollno_err=mail_err=clg_err=year_err=ph_err=pdf_err=0
     row=[name,rollno,mail,clg,year,ph]
-    if name=="" or name==' ':
+    if not valid(name):
         st.error("Enter valid Name of participant")
     else:
         name_err=1
@@ -102,7 +107,7 @@ if st.button("Submit"):
     else:
         mail_err=1
 ###
-    if clg=="" or clg==' ':
+    if not valid2(clg):
         st.error("Enter valid College Name of participant")
     else:
         clg_err=1
