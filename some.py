@@ -6,6 +6,10 @@ from streamlit.components.v1 import iframe
 from github import Github
 import random
 import smtplib
+import re
+
+regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+
 # my_form = st.form(key = "some")
 # name = my_form.text_input(label = "Enter the model name")
 # age = my_form.text_input(label = "Enter the age")
@@ -90,7 +94,7 @@ if st.button("Submit"):
     else:
         rollno_err=1
 ###
-    if mail=="" or mail==' ' :
+    if not (re.fullmatch(regex, email)):
         st.error("Enter valid Mail ID of participant")
     else:
         mail_err=1
