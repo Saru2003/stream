@@ -78,7 +78,10 @@ def fun():
                         st.write("(A mail has been sent your registered mail id)")
             except:
                         st.write("Invalid Mail ID is entered, no registration info will be sent.")
-           
+def check(email):
+            if not (re.fullmatch(regex, email)):
+                        return 1
+            return 0
 st.write("Note: Make sure you download the Technotronz ID PDF after submitting for participating in events!")
 if st.button("Submit"):
     
@@ -93,8 +96,8 @@ if st.button("Submit"):
         st.error("Enter valid Roll Number of participant")            
     else:
         rollno_err=1
-###
-    if not (re.fullmatch(regex, email)):
+###     
+    if check(email):
         st.error("Enter valid Mail ID of participant")
     else:
         mail_err=1
