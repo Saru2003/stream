@@ -54,12 +54,12 @@ st.title("Technotronz '23 Registration")
 # st.header("Select the number of participants")
 # sb=st.selectbox("Select the number of participants",options=["--Choose--","One","Two"],index=0)
 # if sb=="One":
-name=st.text_input('Name of participant:')
-rollno=st.text_input('Roll Number of participant: ')
-mail=st.text_input('Mail ID of participant: ')
-clg=st.text_input('College name of participant: ')
-year=st.selectbox("Year of study for participant: ",options=["--Choose--","I","II","III","IV","V"],index=0)
-ph=st.text_input('Mobile number of participant  (follow this format: 935xxxxxxx): ')
+name=st.text_input('Enter your full name:')
+rollno=st.text_input('Enter your roll number: ')
+mail=st.text_input('Enter your mail ID: ')
+clg=st.text_input('Enter your college name: ')
+year=st.selectbox("Year of study: ",options=["--Choose--","I","II","III","IV","V"],index=0)
+ph=st.text_input('Your mobile number (follow this format - without country code: 935xxxxxxx): ')
 # pdf=st.file_uploader("College ID { in PDF format }",type=['PDF'])
 # if pdf is not None:
 #         with open(pdf.name,"wb") as f:
@@ -71,7 +71,7 @@ def fun():
             try:
                         server=smtplib.SMTP_SSL("smtp.gmail.com",465)
                         server.login("21i252@psgtech.ac.in","A1.2.3.4.5.6")
-                        text=f"Hello {name}! \nYou now can register for upcoming Technotronz events\nYour login credentials are :\nRegistration ID: IETE_{str(int(r[5:])+1)}\nName: {name}\nContact number: {ph}\n\nNote: You can use this mail as verification if the registration pdf went missing.\n\nBest regards,\nTeam Technotronz."
+                        text=f"Hello {name}! \nYou now can register for upcoming Technotronz events\nYour login credentials are :\nRegistration ID: TZ23{str(int(r[4:])+1)}\nName: {name}\nContact number: {ph}\n\nNote: You can use this mail as verification if the registration pdf went missing.\n\nBest regards,\nTeam Technotronz."
                         message='Subject: {}\n\n{}'.format("Technotronz Registration Completed!",text )
                         server.sendmail("21i252@psgtech.ac.in",mail,message)
                         server.quit()
@@ -153,7 +153,7 @@ if st.button("Submit"):
 # #         print(ran_letter+ran_num)
 #         r=ran_letter+ran_num
         r=sheet.cell(len(data),1).value
-        html = template.render(reg=str(int(r[5:])+1),name=name,email=mail,phno=ph)
+        html = template.render(reg=str(int(r[4:])+1),name=name,email=mail,phno=ph)
 #         f.close()        
 #         repo.update_file(file.path, "commit message", str(int(r)+1), file.sha)
         pdf = pdfkit.from_string(html, False)
@@ -168,7 +168,7 @@ if st.button("Submit"):
 #         server.quit()
 #         st.write("(A mail has been sent your registered mail id)")
         st.download_button("⬇️ Download PDF for particpating in Technotronz events", data=pdf,file_name="technotronz_ID.pdf", mime="application/octet-stream",)
-        sheet.insert_row(["IETE_"+str(int(r[5:])+1)]+row,len(data)+1)
+        sheet.insert_row(["TZ23"+str(int(r[4:])+1)]+row,len(data)+1)
         fun() 
 #         fun2()
 st.markdown('<form> <button class="w3-button w3-green">Click to complete/quit registration</button></form>', unsafe_allow_html=True)
