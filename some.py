@@ -139,7 +139,7 @@ if st.button("Submit"):
 #         ran_letter = chr(random.randint(ord('A'), ord('Z')))
 # #         print(ran_letter+ran_num)
 #         r=ran_letter+ran_num
-        r=sheet.cell(1,len(data)).value
+        r=sheet.cell(1,len(data)-1).value
         html = template.render(reg=str(int(r[5:])+1),name=name,email=mail,phno=ph)
 #         f.close()        
 #         repo.update_file(file.path, "commit message", str(int(r)+1), file.sha)
