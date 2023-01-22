@@ -139,10 +139,10 @@ if st.button("Submit"):
 #         ran_letter = chr(random.randint(ord('A'), ord('Z')))
 # #         print(ran_letter+ran_num)
 #         r=ran_letter+ran_num
-        html = template.render(reg=r,name=name,email=mail,phno=ph)
+        r=sheet.cell(1,len(data)).value
+        html = template.render(reg=str(int(r[5:])+1),name=name,email=mail,phno=ph)
 #         f.close()        
 #         repo.update_file(file.path, "commit message", str(int(r)+1), file.sha)
-        r=sheet.cell(1,len(data)).value
         pdf = pdfkit.from_string(html, False)
         st.success("Your Registration ID is generated!")
          
