@@ -73,7 +73,7 @@ def fun():
                         st.write("(A mail has been sent your registered mail id)")
             except:
                         st.write("Invalid Mail ID is entered, no registration info will be sent.")
-            fun2()
+           
 st.write("Note: Make sure you download the Technotronz ID PDF after submitting for participating in events!")
 if st.button("Submit"):
     
@@ -156,7 +156,8 @@ if st.button("Submit"):
 #         st.write("(A mail has been sent your registered mail id)")
         st.download_button("⬇️ Download PDF for particpating in Technotronz events", data=pdf,file_name="technotronz_ID.pdf", mime="application/octet-stream",)
         sheet.insert_row(["IETE_"+str(int(r[5:])+1)]+row,len(data)+1)
-        fun()   
+        fun() 
+        fun2()
 #         st.markdown('<form> <button class="w3-button w3-green">Click to complete registration</button></form>', unsafe_allow_html=True)
 #         if name_err==rollno_err==mail_err==clg_err==year_err==ph_err==1:
 
