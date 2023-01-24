@@ -171,7 +171,7 @@ if d:
     # #         print(ran_letter+ran_num)
     #         r=ran_letter+ran_num
             r=sheet.cell(len(data),1).value
-            html = template.render(reg=str(int(r[4:])+1),name=name,mail=mail,ph=ph)
+            html = template.render(reg="TZ23"+str(int(r[4:])+1),name=name,mail=mail,ph=ph)
     #         f.close()        
     #         repo.update_file(file.path, "commit message", str(int(r)+1), file.sha)
 #             pdf = pdfkit.from_string(html, False)
