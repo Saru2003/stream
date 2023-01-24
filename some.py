@@ -17,7 +17,12 @@ regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 # img=Image.open("Untitled design.png")
-st.set_page_config(page_title="Technotronz Registration",page_icon="Untitled design.png")
+st.set_page_config(page_title="TZ23 General Registration",page_icon="Untitled design.png")
+# c1,c2,c3=st.columns([6,9,1])
+# with c3:
+#             st.markdown('<form> <button class="w3-button w3-green">Click to complete/quit registration</button></form>', unsafe_allow_html=True)
+#               st.markdown('<form> <button style="height:58px;width:120px" font-size:100px>Click to quit registration</button></form>', unsafe_allow_html=True)
+st.write("dd")
 hide_ststyle = """
             <style>
             #MainMenu {visibility: hidden;}
@@ -49,7 +54,7 @@ sheet = client.open("registration").sheet1
 
 # st.title("hello")
 p=st.empty()
-st.title("Technotronz '23 Registration")
+st.title("TZ23 General registration ")
 # st.write("Each")
 # st.header("Select the number of participants")
 # sb=st.selectbox("Select the number of participants",options=["--Choose--","One","Two"],index=0)
@@ -68,16 +73,16 @@ ph=st.text_input('Your mobile number (follow this format - without country code:
 def fun2():
             st.markdown('<form> <button class="w3-button w3-green">Click to complete/quit registration</button></form>', unsafe_allow_html=True)
 def fun():
-            try:
+#             try:
                         server=smtplib.SMTP_SSL("smtp.gmail.com",465)
                         server.login("21i252@psgtech.ac.in","A1.2.3.4.5.6")
-                        text=f"Hello {name}! \nYou now can register for upcoming Technotronz events\nYour login credentials are :\nRegistration ID: TZ23{str(int(r[4:])+1)}\nName: {name}\nContact number: {ph}\n\nNote: You can use this mail as verification if the registration pdf went missing.\n\nBest regards,\nTeam Technotronz."
+                        text=f"Hello {name}! \nGet ready to enroll for the electrifying events of Technotronz'23.\nYour login credentials are :\nRegistration ID: TZ23{str(int(r[4:])+1)}\nName: {name}\nContact number: {ph}\n\nNOTE: This mail along with the Registeration pdf be used as verification.\n\nBest regards,\nTeam Technotronz."
                         message='Subject: {}\n\n{}'.format("Technotronz Registration Completed!",text )
                         server.sendmail("21i252@psgtech.ac.in",mail,message)
                         server.quit()
                         st.write("(A mail has been sent your registered mail id)")
-            except:
-                        st.write("Invalid Mail ID is entered, no registration info will be sent.")
+#             except:
+#                         st.write("Invalid Mail ID is entered, no registration info will be sent.")
 def check(email):
             if not (re.fullmatch(regex, email)):
                         return 1
@@ -87,91 +92,106 @@ def valid(name):
     return name.isalpha()
 def valid2(name):
     return name.replace(" ","").isalpha()
-st.write("Note: Make sure you download the Technotronz ID PDF after submitting for participating in events!")
-if st.button("Submit"):
-    
-    name_err=rollno_err=mail_err=clg_err=year_err=ph_err=pdf_err=0
-    row=[name,rollno,mail,clg,year,ph]
-    if not valid(name):
-        st.error("Enter valid Name of participant")
-    else:
-        name_err=1
-###
-    if rollno=="" or rollno==' ':
-        st.error("Enter valid Roll Number of participant")            
-    else:
-        rollno_err=1
-###     
-    if check(mail):
-        st.error("Enter valid Mail ID of participant")
-    else:
-        mail_err=1
-###
-    if not valid2(clg):
-        st.error("Enter valid College Name of participant")
-    else:
-        clg_err=1
-###
-    if year=="--Choose--":
-        st.error("Enter year of study for participant")
-    else:
-        year_err=1
-###
-    if ph=="" or ph==' ' or not (ph[4:].isdigit()) or len(ph)<10 or len(ph)>10:
-        st.error("Enter valid paricipant phone number")
-    else:
-        ph_err=1
-    
-###
-    # if pdf is None:
-    #     st.error("Upload College ID { in PDF format }")
-    # else:
-    #     pdf_err=1
-    # if name_err==rollno_err==mail_err==clg_err==year_err==ph_err==pdf_err==1:
-    if name_err==rollno_err==mail_err==clg_err==year_err==ph_err==1:
-        print(row)
-        data=sheet.get_all_values()
-        
-        # st.markdown(f'<h1 style="color:#33ff33;font-size:25px;font-family: Verdana, Geneva, Tahoma, sans-serif">{"Successfully registered"}</h1>', unsafe_allow_html=True)
-        
-#         g = Github("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")
-#         repo=g.get_repo("Saru2003/id")
-#         file = repo.get_contents("ID.txt")
-            
-#         g=Github("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")
-#         repo=g.get_repo("Saru2003/id")
-#         file = repo.get_contents("ID.txt")
-#         content = int(file.decoded_content.decode())
-#         repo.update_file(file.path, "commit message", str(content+1), file.sha)
-        
-        env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
-        template = env.get_template("template.html")
-#         f=open("ID.txt","r")
-#         r=f.read()
-#         ran_num=str(random.randint(1, 100))
-#         ran_letter = chr(random.randint(ord('A'), ord('Z')))
-# #         print(ran_letter+ran_num)
-#         r=ran_letter+ran_num
-        r=sheet.cell(len(data),1).value
-        html = template.render(reg=str(int(r[4:])+1),name=name,email=mail,phno=ph)
-#         f.close()        
-#         repo.update_file(file.path, "commit message", str(int(r)+1), file.sha)
-        pdf = pdfkit.from_string(html, False)
-        st.success("Your Registration ID is generated!")
-         
-#         server=smtplib.SMTP_SSL("smtp.gmail.com",465)
-#         server.login("21i252@psgtech.ac.in","A1.2.3.4.5.6")
-#         text=f"Hello {name}! You now can register for upcoming Technotonz events\nYour login credentials:\nRegistration ID: {r}\nName: {name}\nContact number: {ph}\n\nNote: You can use this mail as verification if the registration pdf went missing."
-#         message='Subject: {}\n\n{}'.format("Technotronz Registration Completed!",text )
-# #         server.sendmail("21i252@psgtech.ac.in",mail,message)
-       
-#         server.quit()
-#         st.write("(A mail has been sent your registered mail id)")
-        st.download_button("⬇️ Download PDF for particpating in Technotronz events", data=pdf,file_name="technotronz_ID.pdf", mime="application/octet-stream",)
-        sheet.insert_row(["TZ23"+str(int(r[4:])+1)]+row,len(data)+1)
-        fun() 
+st.write("Note: Once you have submitted the detials, save the Technotronz'23 ID PDF for participation in events!")
+col1,col2,col3=st.columns([2,1,2])
+m = st.markdown("""
+<style>
+div.stButton > button:first-child {
+    background-color: rgb(255, 255, 255);
+    height:1.5em;
+    width: 3em; 
+    font-size: 29px;
+    color: black;
+}
+</style>""", unsafe_allow_html=True)
+with col2:
+            d=st.button("Submit")
+if d:
+#   with col1:
+        name_err=rollno_err=mail_err=clg_err=year_err=ph_err=pdf_err=0
+        row=[name,rollno,mail,clg,year,ph]
+        if not valid(name):
+            st.error("Enter valid Name of participant")
+        else:
+            name_err=1
+    ###
+        if rollno=="" or rollno==' ':
+            st.error("Enter valid Roll Number of participant")            
+        else:
+            rollno_err=1
+    ###     
+        if check(mail):
+            st.error("Enter valid Mail ID of participant")
+        else:
+            mail_err=1
+    ###
+        if not valid2(clg):
+            st.error("Enter valid College Name of participant")
+        else:
+            clg_err=1
+    ###
+        if year=="--Choose--":
+            st.error("Enter year of study for participant")
+        else:
+            year_err=1
+    ###
+        if ph=="" or ph==' ' or not (ph[4:].isdigit()) or len(ph)<10 or len(ph)>10:
+            st.error("Enter valid paricipant phone number")
+        else:
+            ph_err=1
+
+    ###
+        # if pdf is None:
+        #     st.error("Upload College ID { in PDF format }")
+        # else:
+        #     pdf_err=1
+        # if name_err==rollno_err==mail_err==clg_err==year_err==ph_err==pdf_err==1:
+        if name_err==rollno_err==mail_err==clg_err==year_err==ph_err==1:
+            print(row)
+            data=sheet.get_all_values()
+
+            # st.markdown(f'<h1 style="color:#33ff33;font-size:25px;font-family: Verdana, Geneva, Tahoma, sans-serif">{"Successfully registered"}</h1>', unsafe_allow_html=True)
+
+    #         g = Github("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")
+    #         repo=g.get_repo("Saru2003/id")
+    #         file = repo.get_contents("ID.txt")
+
+    #         g=Github("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")
+    #         repo=g.get_repo("Saru2003/id")
+    #         file = repo.get_contents("ID.txt")
+    #         content = int(file.decoded_content.decode())
+    #         repo.update_file(file.path, "commit message", str(content+1), file.sha)
+
+            env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
+            template = env.get_template("index (1).html")
+    #         f=open("ID.txt","r")
+    #         r=f.read()
+    #         ran_num=str(random.randint(1, 100))
+    #         ran_letter = chr(random.randint(ord('A'), ord('Z')))
+    # #         print(ran_letter+ran_num)
+    #         r=ran_letter+ran_num
+            r=sheet.cell(len(data),1).value
+            html = template.render(reg=str(int(r[4:])+1),name=name,mail=mail,ph=ph)
+    #         f.close()        
+    #         repo.update_file(file.path, "commit message", str(int(r)+1), file.sha)
+#             pdf = pdfkit.from_string(html, False)
+            pdf = pdfkit.from_string(html,False)
+            st.success("Your Registration ID is generated!")
+
+    #         server=smtplib.SMTP_SSL("smtp.gmail.com",465)
+    #         server.login("21i252@psgtech.ac.in","A1.2.3.4.5.6")
+    #         text=f"Hello {name}! You now can register for upcoming Technotonz events\nYour login credentials:\nRegistration ID: {r}\nName: {name}\nContact number: {ph}\n\nNote: You can use this mail as verification if the registration pdf went missing."
+    #         message='Subject: {}\n\n{}'.format("Technotronz Registration Completed!",text )
+    # #         server.sendmail("21i252@psgtech.ac.in",mail,message)
+
+    #         server.quit()
+    #         st.write("(A mail has been sent your registered mail id)")
+            st.download_button("⬇️ Download PDF for particpating in Technotronz events", data=pdf,file_name="technotronz'23_ID.pdf", mime="application/octet-stream",)
+#             st.download_button("⬇️ Download PDF for particpating in Technotronz events", data=pdf, mime="application/octet-stream",)
+            sheet.insert_row(["TZ23"+str(int(r[4:])+1)]+row,len(data)+1)
+            fun() 
 #         fun2()
-st.markdown('<form> <button class="w3-button w3-green">Click to complete/quit registration</button></form>', unsafe_allow_html=True)
+#             st.markdown('<form> <button class="w3-button w3-green">Click to complete/quit registration</button></form>', unsafe_allow_html=True)
 #         st.markdown('<form> <button class="w3-button w3-green">Click to complete registration</button></form>', unsafe_allow_html=True)
 #         if name_err==rollno_err==mail_err==clg_err==year_err==ph_err==1:
 
