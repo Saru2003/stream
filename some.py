@@ -22,7 +22,7 @@ st.set_page_config(page_title="TZ23 General Registration",page_icon="Untitled de
 # with c3:
 #             st.markdown('<form> <button class="w3-button w3-green">Click to complete/quit registration</button></form>', unsafe_allow_html=True)
 #               st.markdown('<form> <button style="height:58px;width:120px" font-size:100px>Click to quit registration</button></form>', unsafe_allow_html=True)
-st.write("dd")
+# st.write("dd")
 hide_ststyle = """
             <style>
             #MainMenu {visibility: hidden;}
